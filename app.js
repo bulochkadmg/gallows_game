@@ -34,8 +34,9 @@ while(remainingLetters > 0) {
     alert(answerArray.join(' '));
 
     // Получение буквы от игрока
-    let guess = prompt('Введите букву, или нажмите Cancel чтобы выйти из игры.');
+    let guess = prompt('Введите букву, или нажмите Отмена чтобы выйти из игры.');
     if (guess === null) {
+        // Выход из цикла
         break;
     } else if (guess.length !== 1) {
         alert('Пожалуйста, введите одну букву');
