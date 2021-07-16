@@ -29,6 +29,7 @@ let remainingLetters = word.length;
 
 // Game cicle
 while(remainingLetters > 0) {
+    // Game code goes here
     alert(answerArray.join(' '));
     let guess = prompt('Guess a letter, or click Cancel to stop playing.');
     if (guess === null) {
@@ -37,8 +38,13 @@ while(remainingLetters > 0) {
         alert('Please enter a single letter');
     } else {
         // Update the game state with the guess
+        for(let j = 0; j < word.length; j++) {
+            if (word[j] === guess) {
+                answerArray[j] = guess;
+                remainingLetters--;
+            }
+        }
     }
-    // Game code goes here
     // Show the player their progress
     // Take input from the player
     // Update answerArray and remainingLetters
