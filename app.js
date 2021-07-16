@@ -1,25 +1,26 @@
-// Random word
+// Массив из слов
 let words = [
-    'javascript',
-    'monkey',
-    'amazing',
-    'pancake',
-    'guide',
-    'cat',
-    'banana',
-    'dog',
-    'house',
-    'sea',
-    'found',
-    'member',
-    'splash',
-    'frog',
-    'random',
+    'яблоко',
+    'фея',
+    'кот',
+    'печенька',
+    'пиво',
+    'котик',
+    'банан',
+    'собака',
+    'ревасик',
+    'море',
+    'компьютер',
+    'память',
+    'дом',
+    'лягушка',
+    'пылесос',
 ];
 
+// Рандомное слово из массива
 let word = words[Math.floor(Math.random() * words.length)];
 
-// Answer array
+// Массив ответов
 let answerArray = [];
 for(let i = 0; i < word.length; i++) {
     answerArray[i] = '_';
@@ -27,17 +28,19 @@ for(let i = 0; i < word.length; i++) {
 
 let remainingLetters = word.length;
 
-// Game cicle
+// Цикл игры
 while(remainingLetters > 0) {
-    // Game code goes here
+    // Прогресс игрока
     alert(answerArray.join(' '));
-    let guess = prompt('Guess a letter, or click Cancel to stop playing.');
+
+    // Получение буквы от игрока
+    let guess = prompt('Введите букву, или нажмите Cancel чтобы выйти из игры.');
     if (guess === null) {
         break;
     } else if (guess.length !== 1) {
-        alert('Please enter a single letter');
+        alert('Пожалуйста, введите одну букву');
     } else {
-        // Update the game state with the guess
+        // Обновление состояния игры
         for(let j = 0; j < word.length; j++) {
             if (word[j] === guess) {
                 answerArray[j] = guess;
@@ -45,8 +48,9 @@ while(remainingLetters > 0) {
             }
         }
     }
-    // Show the player their progress
-    // Take input from the player
-    // Update answerArray and remainingLetters
-    // for every correct guess
+    // Конец цикла игры
 }
+
+    // Вывод ответа и поздравления
+    alert(answerArray.join(' '));
+    alert(`Отлично! Ты отгадал слово - ${word}`);
