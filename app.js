@@ -5,6 +5,12 @@ let words = [
     'кот',
     'печенька',
     'пиво',
+    'телефон',
+    'чашка',
+    'балкон',
+    'дерево',
+    'роза',
+    'молоток',
     'котик',
     'банан',
     'собака',
@@ -27,9 +33,10 @@ for(let i = 0; i < word.length; i++) {
 }
 
 let remainingLetters = word.length;
+let tryCounter = 5;
 
 // Цикл игры
-while(remainingLetters > 0) {
+while(remainingLetters > 0 && tryCounter > 0) {
     // Прогресс игрока
     alert(answerArray.join(' '));
 
@@ -41,9 +48,11 @@ while(remainingLetters > 0) {
     } else if (guess.length !== 1) {
         alert('Пожалуйста, введите одну букву');
     } else {
+        tryCounter--;
+        guess = guess.toLowerCase();
         // Обновление состояния игры
         for(let j = 0; j < word.length; j++) {
-            if (word[j] === guess) {
+            if (word[j] === guess && answerArray[j] === "_") {
                 answerArray[j] = guess;
                 remainingLetters--;
             }
@@ -54,4 +63,8 @@ while(remainingLetters > 0) {
 
     // Вывод ответа и поздравления
     alert(answerArray.join(' '));
-    alert(`Отлично! Ты отгадал слово - ${word}`);
+    if (tryCounter > 0) {
+        alert(`Отлично! Ты отгадал слово ${word}`);
+    } else {
+        alert(`Ты проиграл! Слово было - ${word}`);
+    }
